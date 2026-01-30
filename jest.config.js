@@ -5,9 +5,11 @@ module.exports = {
   preset: 'ts-jest',
   rootDir: './',
   moduleFileExtensions: ['js', 'json', 'ts'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/',
-  }),
+  moduleNameMapper: compilerOptions.paths
+    ? pathsToModuleNameMapper(compilerOptions.paths, {
+        prefix: '<rootDir>/',
+      })
+    : {},
   testRegex: '.*\\..*spec\\.ts$',
   transform: {
     '^.+\\.(t|j)s$': [
