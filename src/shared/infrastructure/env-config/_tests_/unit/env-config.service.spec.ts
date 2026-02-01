@@ -7,7 +7,7 @@ describe('EnvConfigService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [EnvConfigModule.forRoot()],
+      imports: [EnvConfigModule.forRoot()], //importando o modulo do envconfig
       providers: [EnvConfigService],
     }).compile(); //cria um modulo a ser usado pela variavel.
 
