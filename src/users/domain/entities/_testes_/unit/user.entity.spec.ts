@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { UserDataBuilder } from '../../../testing/helpers/user.data.builder';
 import { UserEntity, UserProps } from '../../user.entity';
 
 describe('UserEntity unit tests', () => {
@@ -6,19 +6,42 @@ describe('UserEntity unit tests', () => {
   let sut: UserEntity;
 
   beforeEach(() => {
-    props = {
-      name: faker.person.fullName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-    };
+    props = UserDataBuilder({});
 
     sut = new UserEntity(props);
   });
+
+  //teste do método construtor para saber se o valor recebido no parametro dentro do construtor da entidade é o mesmo valor do tipo props
 
   it('Constructor method', () => {
     expect(sut.props.name).toEqual(props.name);
     expect(sut.props.email).toEqual(props.email);
     expect(sut.props.password).toEqual(props.password);
+    expect(sut.props.createdAt).toBeInstanceOf(Date);
+  });
+
+  //testes do método get para acessar dados da entidade
+
+  it('Getter of name field', () => {
+    expect(sut.props.name).toBeDefined();
+    expect(sut.props.name).toEqual(props.name);
+    expect(typeof sut.props.name).toBe('string');
+  });
+
+  it('Getter of email field', () => {
+    expect(sut.props.email).toBeDefined();
+    expect(sut.props.email).toEqual(props.email);
+    expect(typeof sut.props.email).toBe('string');
+  });
+
+  it('Getter of password field', () => {
+    expect(sut.props.password).toBeDefined();
+    expect(sut.props.password).toEqual(props.password);
+    expect(typeof sut.props.password).toBe('string');
+  });
+
+  it('Getter of createdAt field', () => {
+    expect(sut.props.createdAt).toBeDefined();
     expect(sut.props.createdAt).toBeInstanceOf(Date);
   });
 });
