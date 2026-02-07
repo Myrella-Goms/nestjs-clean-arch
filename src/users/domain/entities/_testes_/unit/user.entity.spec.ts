@@ -28,6 +28,18 @@ describe('UserEntity unit tests', () => {
     expect(typeof sut.props.name).toBe('string');
   });
 
+  it('Setter of name field', () => {
+    sut['name'] = 'other name'; //a propriedade é privada então setamos o valor dessa forma, não conseguimos atribuir diretamente
+    expect(sut.props.name).toEqual('other name');
+    expect(typeof sut.props.name).toBe('string');
+  });
+
+  it('Update of name field', () => {
+    sut.updateName('other name');
+    expect(sut.props.name).toEqual('other name');
+    expect(typeof sut.props.name).toBe('string');
+  });
+
   it('Getter of email field', () => {
     expect(sut.props.email).toBeDefined();
     expect(sut.props.email).toEqual(props.email);
@@ -37,6 +49,18 @@ describe('UserEntity unit tests', () => {
   it('Getter of password field', () => {
     expect(sut.props.password).toBeDefined();
     expect(sut.props.password).toEqual(props.password);
+    expect(typeof sut.props.password).toBe('string');
+  });
+
+  it('Setter of password field', () => {
+    sut['password'] = 'other password';
+    expect(sut.props.password).toEqual('other password');
+    expect(typeof sut.props.password).toBe('string');
+  });
+
+  it('Update of password field', () => {
+    sut.updatePassword('other password');
+    expect(sut.props.password).toEqual('other password');
     expect(typeof sut.props.password).toBe('string');
   });
 
