@@ -9,7 +9,7 @@ describe('UserEntity unit tests', () => {
     props = UserDataBuilder({});
 
     sut = new UserEntity(props);
-  });
+  }); //beforeEach é um hook executado antes que a gente rode os testes no it, isso garante que nenhum teste interfira no outro e ele sempre cria uma intanscia limpa de sut
 
   //teste do método construtor para saber se o valor recebido no parametro dentro do construtor da entidade é o mesmo valor do tipo props
 

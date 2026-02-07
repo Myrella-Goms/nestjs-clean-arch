@@ -1,0 +1,23 @@
+import { randomUUID as uuidv4 } from "node:crypto";
+
+export abstract class Entity<Props = any> {
+  public readonly _id: string;
+  public readonly props: Props;
+
+  constructor(props: Props, id?: string) {
+    this.props = props;
+    this._id = id || uuidv4();
+  }
+
+  get id() {
+    return this._id;
+  }
+
+  //convertendo a entidade para json com as informações da instancia
+  toJSON(): { id: string } & Props {
+    return {
+      id: this._id,
+      ...this.props,
+    };
+  }
+}
