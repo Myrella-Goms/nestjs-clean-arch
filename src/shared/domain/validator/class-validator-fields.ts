@@ -13,7 +13,7 @@ export abstract class ClassValidatorFields<
   validate(data: any): boolean {
     const errors = validateSync(data);
     if (errors.length) {
-      this.errors = {};
+      this.errors = {}; //resetando a propriedade da instancia para que ela não acumule resultados
       for (const error of errors) {
         const field = error.property; //property vem do objeto que é retornado de validateSync
         this.errors[field] = Object.values(error.constraints); //obtendo o valor das chaves do objeto constraint
